@@ -16,6 +16,8 @@ $ ./gradlew check
 
 ### Coverage
 
+### Functional Tests
+
 ### Docker
 
 
