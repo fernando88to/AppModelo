@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  oracle:
+    image: gvenzl/oracle-xe:18-slim
+    # Forward Oracle port
+    ports:
+      - 1521:1521
+    environment:
+      #This variable is mandatory for the first container startup and specifies the password for the Oracle Database SYS and SYSTEM users.
+      ORACLE_PASSWORD: 123456
+      #service name
+      #ORACLE_DATABASE: XEPDB1
+      APP_USER: useroracle
+      APP_USER_PASSWORD: 123456
+    volumes:
+      - oracle-volume:/opt/oracle/oradata
+
+volumes:
+  oracle-volume:
+

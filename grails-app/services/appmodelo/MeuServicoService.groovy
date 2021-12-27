@@ -9,7 +9,7 @@ class MeuServicoService {
 
     @SuppressWarnings(['MethodReturnTypeRequired'])
     def serviceMethod() {
-        BigDecimal d = 545g
+        def d = 545g
         println d
     }
 

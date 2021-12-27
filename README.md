@@ -2,6 +2,11 @@
 
 Project in grails 5.1.1 
 
+Clean directory of the build, execute static analysis of the code, execute tests and generate final build.  
+```
+./gradlew clean check test assemble
+```
+
 ### SDK versions
 
 * grails 5.1.1
@@ -19,5 +24,12 @@ $ ./gradlew check
 ### Functional Tests
 
 ### Docker
+
+### Pool Conection
+
+About hikari
+https://github.com/davidbairdala/connection-pool-test
+https://github.com/grails/grails-core/issues/10943
+https://gorm.grails.org/latest/hibernate/manual/index.html
 
 

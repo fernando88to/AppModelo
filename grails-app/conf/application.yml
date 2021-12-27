@@ -93,22 +93,33 @@ hibernate:
         queries: false
         use_second_level_cache: false
         use_query_cache: false
+    allow_update_outside_transaction: true #permite fazer transaçoes no controller se não tem que colocar a anotaçao(@Transactional) no metodo
+    #só pega os sinonimos com essa opção ativada
+    hbm2ddl:
+        jdbc_metadata_extraction_strategy: individually
+
 dataSource:
     pooled: true
     jmxExport: true
-    driverClassName: org.h2.Driver
-    username: sa
-    password: ''
+    driverClassName: oracle.jdbc.OracleDriver
+    username: useroracle
+    password: 123456
+    dialect: org.hibernate.dialect.Oracle10gDialect
 
 environments:
     development:
+        server:
+            port: 8090
         dataSource:
-            dbCreate: create-drop
-            url: jdbc:h2:mem:devDb;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            dbCreate: create
+            #service name
+            url: jdbc:oracle:thin:@//127.0.0.1:1521/XEPDB1
+            #sid
+            #url: jdbc:oracle:thin:@127.0.0.1:1521:XEPDB1
     test:
         dataSource:
             dbCreate: update
-            url: jdbc:h2:mem:testDb;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:oracle:thin:@//127.0.0.1:1521/XEPDB1
     production:
         dataSource:
             dbCreate: none
