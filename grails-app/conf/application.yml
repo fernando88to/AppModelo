@@ -119,7 +119,7 @@ environments:
     test:
         dataSource:
             dbCreate: update
-            url: jdbc:oracle:thin:@//127.0.0.1:1521/XEPDB1
+            url: jdbc:oracle:thin:@//oracle:1521/XEPDB1
     production:
         dataSource:
             dbCreate: none
