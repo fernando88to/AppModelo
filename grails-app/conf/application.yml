@@ -109,7 +109,7 @@ dataSource:
 environments:
     development:
         server:
-            port: 8090
+            port: 8080
         dataSource:
             dbCreate: create
             #service name

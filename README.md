@@ -33,3 +33,6 @@ https://github.com/grails/grails-core/issues/10943
 https://gorm.grails.org/latest/hibernate/manual/index.html
 
 
+
+
+./grailsw test-app  -Dgeb.env=remote
