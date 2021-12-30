@@ -18,6 +18,8 @@ class PeopleFunctionSpec extends GebSpec {
     }
 
     def cleanup() {
+
+        //browser.quit()
     }
 
     void "test something2"() {
@@ -25,8 +27,8 @@ class PeopleFunctionSpec extends GebSpec {
             go '/'
         then:"The title is correct"
         	title == "Welcome to Grails"
-        cleanup:
-          browser.quit()
+
+
     }
     /*void "test something"() {
         when:"The home page is visited"
@@ -38,13 +40,12 @@ class PeopleFunctionSpec extends GebSpec {
     }*/
 
 
-    /*void "test google"() {
+    void "test google"() {
         when:"The home page is visited"
             go 'https://www.google.com.br'
         then:"The title should be 'Google'"
-            title == "Google222"
-        cleanup:
-            browser.quit()
+            title == "Google"
 
-    }*/
+
+    }
 }

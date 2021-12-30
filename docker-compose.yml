@@ -4,8 +4,8 @@ services:
   oracle:
     image: gvenzl/oracle-xe:18-slim
     # Forward Oracle port
-    ports:
-      - 1521:1521
+    expose:
+      - 1521
     environment:
       #This variable is mandatory for the first container startup and specifies the password for the Oracle Database SYS and SYSTEM users.
       ORACLE_PASSWORD: 123456
@@ -15,8 +15,7 @@ services:
       APP_USER_PASSWORD: 123456
     volumes:
       - oracle-volume:/opt/oracle/oradata
-    networks:
-      - default
+    network_mode: host
 
   jenkins:
     #image: jenkins/jenkins:lts
@@ -25,57 +24,62 @@ services:
       dockerfile: Dockerfile
     #privileged: true
     #user: root
-    ports:
-      - 8089:8080
+    expose:
+      - 8089
       #- 50000:50000
     volumes:
       - jenkins_home:/var/jenkins_home
       #- /var/run/docker.sock:/var/run/docker.sock
       #- /usr/local/bin/docker:/usr/local/bin/docker
-    networks:
-      - default
+    network_mode: host
 
-  selenium-hub:
-    image: selenium/hub:3.141.59-20210607
-    container_name: selenium-hub
-    ports:
-      - 4444:4444
-    #volumes:
-    #  - selenium-volume:/var/lib/selenium
-    networks:
-      - default
+#
+#  chrome:
+#    image: selenium/node-chrome:4.1.1-20211217
+#    shm_size: 2gb
+#    depends_on:
+#      - selenium-hub
+#    environment:
+#      - SE_EVENT_BUS_HOST=127.0.0.1
+#      - SE_EVENT_BUS_PUBLISH_PORT=4442
+#      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+#    network_mode: host
 
-  chrome:
-    image: selenium/node-chrome:3.141.59-20210607
-    #volumes:
-      #- /dev/shm:/dev/shm
-    depends_on:
-      - selenium-hub
-    environment:
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
-    networks:
-      - default
+
 
   firefox:
-    image: selenium/node-firefox:3.141.59-20210607
-    #volumes:
-      #- /dev/shm/dev/shm
+    image: selenium/node-firefox:4.1.1-20211217
+    shm_size: 2gb
     depends_on:
       - selenium-hub
     environment:
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
-    networks:
-      - default
+      - SE_EVENT_BUS_HOST=127.0.0.1
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    network_mode: host
 
+  selenium-hub:
+    image: selenium/hub:4.1.1-20211217
+    container_name: selenium-hub
+    expose:
+      - "4442"
+      - "4443"
+      - "4444"
+    network_mode: host
 
-
+  dev:
+    build:
+      context: docker/dev
+      dockerfile: Dockerfile
+    user: spring
+    volumes:
+      - .:/AppModelo
+    tty: true
+    expose:
+      - "8080"
+    network_mode: host
 
 volumes:
   oracle-volume:
   jenkins_home:
 
-networks:
-  default:
-    driver: bridge
