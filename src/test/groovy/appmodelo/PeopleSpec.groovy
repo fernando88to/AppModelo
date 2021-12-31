@@ -11,8 +11,8 @@ class PeopleSpec extends Specification implements DomainUnitTest<People> {
     def cleanup() {
     }
 
-    void "test something"() {
+    /*void "test something"() {
         expect:"fix me"
             true == true
-    }
+    }*/
 }

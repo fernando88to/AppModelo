@@ -19,11 +19,22 @@ Project analysis with the following rules specified in the 'gradle/codenarca' fi
 $ ./gradlew check
 ```
 
-### Coverage
-
-### Functional Tests
 
 ### Docker
+
+
+### Test automation
+
+```
+./grailsw test-app  -Dgeb.env=remote
+```
+
+### Code coverage
+
+```
+./gradlew cloverGenerateReport -Dgeb.env=remote
+``` 
+
 
 ### Pool Conection
 
@@ -31,8 +42,3 @@ About hikari
 https://github.com/davidbairdala/connection-pool-test
 https://github.com/grails/grails-core/issues/10943
 https://gorm.grails.org/latest/hibernate/manual/index.html
-
-
-
-
-./grailsw test-app  -Dgeb.env=remote

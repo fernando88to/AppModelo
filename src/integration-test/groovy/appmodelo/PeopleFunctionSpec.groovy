@@ -24,17 +24,17 @@ class PeopleFunctionSpec extends GebSpec {
 
     }
 
-    void "test something2"() {
+    /*void "test something2"() {
         when:"The home page is visited"
             go '/'
         then:"The title is correct"
         	title == "Welcome to Grails"
 
 
-    }
+    }*/
 
-    void "test something3"() {
-        when:"The home page is visited"
+    void "test save"() {
+        when:"form save"
             go '/'
             $("#controllers > ul > li > a").click()
             $("body > div.nav > ul > li:nth-child(2) > a").click()
@@ -54,22 +54,9 @@ class PeopleFunctionSpec extends GebSpec {
 
 
     }
-    /*void "test something"() {
-        when:"The home page is visited"
-            go 'http://172.17.0.1:8080'
-        then:"The title is correct"
-            title == "Welcome to Grails"
-        cleanup:
-            browser.quit()
-    }*/
 
 
-    /*void "test google"() {
-        when:"The home page is visited"
-            go 'https://www.google.com.br'
-        then:"The title should be 'Google'"
-            title == "Google"
 
 
-    }*/
+
 }

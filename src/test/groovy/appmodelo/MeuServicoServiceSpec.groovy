@@ -12,8 +12,8 @@ class MeuServicoServiceSpec extends Specification implements ServiceUnitTest<Meu
     def cleanup() {
     }
 
-    void "test something"() {
+    /*void "test something"() {
         expect:"fix me"
             true == true
-    }
+    }*/
 }
