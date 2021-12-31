@@ -113,13 +113,13 @@ environments:
         dataSource:
             dbCreate: create
             #service name
-            url: jdbc:oracle:thin:@//127.0.0.1:1521/XEPDB1
+            url: jdbc:oracle:thin:@//oracle:1521/XEPDB1
             #sid
             #url: jdbc:oracle:thin:@127.0.0.1:1521:XEPDB1
     test:
         dataSource:
-            dbCreate: update
-            url: jdbc:oracle:thin:@//127.0.0.1:1521/XEPDB1
+            dbCreate:
+            url: jdbc:oracle:thin:@//oracle:1521/XEPDB1
     production:
         dataSource:
             dbCreate: none

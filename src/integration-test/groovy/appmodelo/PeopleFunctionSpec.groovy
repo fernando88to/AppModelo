@@ -5,6 +5,7 @@ import grails.transaction.*
 
 import geb.spock.*
 import org.openqa.selenium.WebDriver
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.Rollback
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.test.annotation.Rollback
  */
 @Integration
 @Rollback
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class PeopleFunctionSpec extends GebSpec {
 
     def setup() {
@@ -19,7 +21,7 @@ class PeopleFunctionSpec extends GebSpec {
 
     def cleanup() {
 
-        //browser.quit()
+
     }
 
     void "test something2"() {
@@ -27,6 +29,28 @@ class PeopleFunctionSpec extends GebSpec {
             go '/'
         then:"The title is correct"
         	title == "Welcome to Grails"
+
+
+    }
+
+    void "test something3"() {
+        when:"The home page is visited"
+            go '/'
+            $("#controllers > ul > li > a").click()
+            $("body > div.nav > ul > li:nth-child(2) > a").click()
+
+            $("#create-people > form").with {
+                name = "admin"
+                email = "teste@gmail.com"
+                create().click()
+            }
+
+        then:"The title is correct"
+            //def people = People.findByName('admin')
+            //people.email == "teste@gmail.com"
+
+        cleanup:
+            browser.quit()
 
 
     }
@@ -40,12 +64,12 @@ class PeopleFunctionSpec extends GebSpec {
     }*/
 
 
-    void "test google"() {
+    /*void "test google"() {
         when:"The home page is visited"
             go 'https://www.google.com.br'
         then:"The title should be 'Google'"
             title == "Google"
 
 
-    }
+    }*/
 }

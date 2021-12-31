@@ -12,7 +12,9 @@ environments {
     remote {
 
 
+        baseUrl = "http://dev:8080/"
         driver = {
+
 
            /* def remoteWebDriverServerUrl = new URL("http://127.0.0.1:4444/wd/hub")
             def capabilities = new DesiredCapabilities()
@@ -24,7 +26,7 @@ environments {
 
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             firefoxOptions.setPlatformName("Linux")
-            def url = new URL("http://127.0.0.1:4444")
+            def url = new URL("http://selenium-hub:4444")
             new RemoteWebDriver(url, firefoxOptions);
 
             /*def url = new URL("http://selenium-router:4444")
