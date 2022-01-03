@@ -20,25 +20,25 @@ $ ./gradlew codenarcMain codenarcTest
 ```
 
 
-### Docker
-
-
 ### Test automation
 
+In  jenkins job, the test are executed with the following parameters:
 ```
 ./grailsw test-app  -Dgeb.env=remote
 ```
 
+Local execution:
+```
+./grailsw test-app
+```
+
 ### Code coverage
 
+In jenkins job, the code coverage is generated with the following parameters:
 ```
 ./gradlew cloverGenerateReport -Dgeb.env=remote
 ``` 
-
-
-### Pool Conection
-
-About hikari
-https://github.com/davidbairdala/connection-pool-test
-https://github.com/grails/grails-core/issues/10943
-https://gorm.grails.org/latest/hibernate/manual/index.html
+Local execution:
+```
+./gradlew cloverGenerateReport
+```
