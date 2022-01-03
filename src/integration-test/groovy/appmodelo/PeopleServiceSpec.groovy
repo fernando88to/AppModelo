@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory
 
 @Integration
 @Rollback
+@SuppressWarnings("all")
 class PeopleServiceSpec extends Specification {
 
     PeopleService peopleService

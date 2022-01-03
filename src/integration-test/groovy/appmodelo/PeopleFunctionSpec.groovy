@@ -14,6 +14,7 @@ import org.springframework.test.annotation.Rollback
 @Integration
 @Rollback
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SuppressWarnings("all")
 class PeopleFunctionSpec extends GebSpec {
 
     def setup() {

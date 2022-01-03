@@ -5,6 +5,7 @@ import grails.gorm.transactions.Transactional
 
 @Transactional
 @GrailsCompileStatic
+
 class MeuServicoService {
 
     @SuppressWarnings(['MethodReturnTypeRequired'])
