@@ -8,6 +8,6 @@ node {
         }
 
         stage ("check"){
-            sh "./gradlew check  -Dgeb.env=remote"
+            sh "./grailsw test-app  -Dgeb.env=remote"
         }
 }
