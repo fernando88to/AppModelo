@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 node {
-        //set a version of the jdk
+        //set the version of the jdk
         env.JAVA_HOME="${tool 'jdk-11.0.12+7'}"
         env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
 
