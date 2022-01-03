@@ -8,6 +8,7 @@ node {
         }
 
         stage("first"){
+                    jdk "jdk-11.0.12+7"
                     sh './grailsw --version '
 
         }
