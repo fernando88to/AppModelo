@@ -7,7 +7,7 @@ node {
             git branch: 'main', url: 'https://github.com/fernando88to/AppModelo.git'
         }
 
-        stage ("check version java"){
+        stage ("check"){
             sh "./gradlew check  -Dgeb.env=remote"
         }
 }
