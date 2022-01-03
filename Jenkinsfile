@@ -8,6 +8,6 @@ node {
         }
 
         stage ("check version java"){
-            sh "./gradlew check"
+            sh "./gradlew check  -Dgeb.env=remote"
         }
 }
