@@ -22,7 +22,7 @@ services:
     build:
       context: docker/jenkins
       dockerfile: Dockerfile
-    hostname: appmodelo_jenkins
+    hostname: jenkinsserver
     ports:
       - "8089:8080"
       - "8888" # port used to communication with selenium grid
