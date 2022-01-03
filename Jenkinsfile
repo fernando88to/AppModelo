@@ -8,13 +8,8 @@ node {
         }
 
         stage("first"){
+                    sh './grailsw --version '
 
-                tools {
-                    jdk "jdk-1.8.101"
-                }
-                steps {
-                    sh 'java -version'
-                }
         }
         stage ("analysis static code"){
                     sh "./gradlew codenarcMain codenarcTest"
