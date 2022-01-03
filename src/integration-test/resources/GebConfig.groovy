@@ -9,7 +9,7 @@ environments {
     remote {
 
         //dev is hostname of the machine where the code is running.
-        baseUrl = "http://appmodelo_jenkins:8888"
+        baseUrl = "http://127.0.0.1:8888"
 
         driver = {
             def url = new URL("http://selenium-hub:4444")
