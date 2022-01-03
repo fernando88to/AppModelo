@@ -6,8 +6,14 @@ node {
         stage("git"){
             git branch: 'main', url: 'https://github.com/fernando88to/AppModelo.git'
         }
+        stage ("analysis static code"){
+                    sh "./gradlew codenarcMain codenarcTest"
+        }
 
-        stage ("check"){
+        stage ("automation test"){
             sh "./grailsw test-app  -Dgeb.env=remote"
+        }
+        stage ("war"){
+            sh "./grailsw war"
         }
 }
