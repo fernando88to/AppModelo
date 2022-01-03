@@ -2,6 +2,8 @@
 node {
         //jdk = tool name: 'jdk-11.0.12+7', type: 'jdk'
         //env.JAVA_HOME = "${jdk}"
+        env.JAVA_HOME="${tool 'jdk-11.0.12+7'}"
+        env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
 
         stage("git"){
             git branch: 'main', url: 'https://github.com/fernando88to/AppModelo.git'
