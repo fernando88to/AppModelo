@@ -16,7 +16,7 @@ Clean directory of the build, execute static analysis of the code, execute tests
 
 Project analysis with the following rules specified in the 'gradle/codenarca' file 
 ```
-$ ./gradlew check
+$ ./gradlew codenarcMain codenarcTest 
 ```
 
 
