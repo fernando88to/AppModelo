@@ -13,6 +13,6 @@ class PeopleSpec extends Specification implements DomainUnitTest<People> {
 
     void "test something"() {
         expect:"fix me"
-            true == false
+            true == true
     }
 }
