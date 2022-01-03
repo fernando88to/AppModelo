@@ -22,8 +22,8 @@ node {
                     sh "./gradlew codenarcMain codenarcTest"
         }
 
-        stage ("automation test"){
-            sh "./grailsw test-app  -Dgeb.env=remote"
+        stage ("automation test && coverage"){
+            sh "./gradlew cloverGenerateReport -Dgeb.env=remote"
         }
         stage ("war"){
             sh "./grailsw war"
