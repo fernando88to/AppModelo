@@ -1,19 +1,23 @@
 #!/usr/bin/env groovy
 node {
-        //jdk = tool name: 'jdk-11.0.12+7', type: 'jdk'
-        //env.JAVA_HOME = "${jdk}"
+        //set a version of the jdk
         env.JAVA_HOME="${tool 'jdk-11.0.12+7'}"
         env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
 
-        stage("git"){
+        stage("version"){
+                            jdk "jdk-11.0.12+7"
+                            sh './grailsw --version '
+
+        }
+
+        stage("git checkout"){
             git branch: 'main', url: 'https://github.com/fernando88to/AppModelo.git'
         }
 
-        stage("first"){
-                    jdk "jdk-11.0.12+7"
-                    sh './grailsw --version '
-
+        stage ("clean build"){
+                    sh './grailsw clean'
         }
+
         stage ("analysis static code"){
                     sh "./gradlew codenarcMain codenarcTest"
         }
