@@ -4,6 +4,6 @@ node {
         env.JAVA_HOME = "${jdk}"
 
         stage ("check version java"){
-            sh "${jdk}/bin/java -version"
+            sh "./gradlew check"
         }
 }
