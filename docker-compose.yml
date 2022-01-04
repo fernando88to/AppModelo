@@ -41,7 +41,7 @@ services:
     privileged: true
     user: root
     container_name: agent
-    hostname: jenkins_agent
+    hostname: jenkinsagente
     ports:
       - "22"
       - "8080"
