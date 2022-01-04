@@ -22,16 +22,28 @@ services:
     build:
       context: docker/jenkins
       dockerfile: Dockerfile
+    privileged: true
+    user: root
     hostname: jenkinsserver
     ports:
       - "8089:8080"
+      - "50000:50000"
       - "8888" # port used to communication with selenium grid
     volumes:
       - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - default
 
-
+  agent:
+    image: jenkins/ssh-agent:jdk11
+    privileged: true
+    user: root
+    container_name: agent
+    expose:
+      - 22
+    environment:
+      - JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCd66ymv/mvCWrF49fiqmycHQi8nHotu036ddVSiNQzNcE1gLhTax8KxZ9WNpCasT96IYU1hT0PmSlGhPRapS5Ay1n+xoHZOXrZmgW0O/Ptia2qXcYGcXxmTw5hR6AP9E/oAaMgai7nDKrlusaYzejA14FaP8JcVd4lEN+T6x1AZDFjXkmIy1Eyr3NCQJNUI/YKXdHBfIRR1Kqf6wY068rDugoZsJSrM8pDDBd5R+kNgOqg7hos6lGhFw1KiebvMAQAhtN4B/YAKpNye2UGcGiAuFJFs8IfQrtQFbe2LB5+xjpucGLD/fnIywApq/JvcwZZSqOqPvOvFVtAUOJ+QakZKHHbmqIR4PthOqb0f/OMhsz3rIwzP98rynH7i/1qNO0Tu6NY7be+ZP2LYQkL6oFgZpan4Vu4tkU7FiuAWXG0b2I3Ybu61EuPz22aMrfUQ/rT95PI/CZf18D/QAzMJESZiSMWfMpyhkbgmWrDSf0spBzzNMtCgf39sJgILA126yc= fernando@fernando-vostro3681
 
   firefox:
     image: selenium/node-firefox:4.1.1-20211217
