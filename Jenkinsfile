@@ -15,6 +15,12 @@ pipeline {
             }
         }
 
+        stage ("clean build"){
+            steps {
+                sh 'rm -rf build'
+            }
+        }
+
         stage("version"){
                     steps {
                         //jdk "jdk-11.0.12+7"
@@ -22,12 +28,7 @@ pipeline {
                     }
         }
 
-        stage ("clean build"){
-            steps {
-                sh './grailsw clean'
-                sh 'rm -rf build'
-            }
-        }
+
 
 
         stage ("analysis static code"){
