@@ -24,6 +24,7 @@ pipeline {
         stage ("clean build"){
             steps {
                 sh './grailsw clean'
+                sh 'rm -rf build'
             }
         }
 
