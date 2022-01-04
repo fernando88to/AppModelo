@@ -8,17 +8,18 @@ pipeline {
 
 
     stages {
-        stage("version"){
-            steps {
-                //jdk "jdk-11.0.12+7"
-                sh './grailsw --version '
-            }
-        }
 
         stage("git checkout"){
             steps {
                 git branch: 'main', url: 'https://github.com/fernando88to/AppModelo.git'
             }
+        }
+
+        stage("version"){
+                    steps {
+                        //jdk "jdk-11.0.12+7"
+                        sh './grailsw --version '
+                    }
         }
 
         stage ("clean build"){
