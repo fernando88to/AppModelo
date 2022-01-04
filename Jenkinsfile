@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage("version"){
             steps {
-                jdk "jdk-11.0.12+7"
+                //jdk "jdk-11.0.12+7"
                 sh './grailsw --version '
             }
         }
