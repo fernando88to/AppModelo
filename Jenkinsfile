@@ -19,7 +19,7 @@ pipeline {
             steps {
                 /* sh 'rm -rf build' */
                 dir('build') {
-                    deleteDir()
+                    sh 'ls -l'
                 }
             }
         }
