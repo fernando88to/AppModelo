@@ -17,12 +17,10 @@ pipeline {
 
         stage ("clean build"){
             steps {
-                /* sh 'rm -rf build' */
-                    //deleteDir('build')
+                 sh 'rm -rf build/*'
 
-                    dir("build") {
-                        deleteDir()
-                     }
+
+
 
             }
         }
