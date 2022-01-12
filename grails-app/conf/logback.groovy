@@ -23,7 +23,7 @@ appender('STDOUT', ConsoleAppender) {
 }
 
 def targetDir = BuildSettings.TARGET_DIR
-if (Environment.isDevelopmentMode() && targetDir != null) {
+/*if (Environment.isDevelopmentMode() && targetDir != null) {
     appender("FULL_STACKTRACE", FileAppender) {
         file = "${targetDir}/stacktrace.log"
         append = true
@@ -33,5 +33,34 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
         }
     }
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
+}*/
+
+appender("FULL_STACKTRACE", FileAppender) {
+    file = "stacktrace.log"
+    append = true
+    encoder(PatternLayoutEncoder) {
+        charset = StandardCharsets.UTF_8
+        pattern =
+                '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} ' + // Date
+                        '%clr(%5p) ' + // Log level
+                        '%clr(---){faint} %clr([%15.15t]){faint} ' + // Thread
+                        '%clr(%-40.40logger{39}){cyan} %clr(:){faint} ' + // Logger
+                        '%m%n%wex' // Message
+    }
+
 }
-root(ERROR, ['STDOUT'])
+logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
+
+
+appender('JSON', FileAppender) {
+    file = "stacktrace.json"
+    append = true
+    encoder(PatternLayoutEncoder) {
+        charset = StandardCharsets.UTF_8
+        pattern = '%m%n%wex' // Message
+    }
+}
+
+
+root(ERROR, ['STDOUT','FULL_STACKTRACE'])
+logger 'appmodelo.LoggerController', INFO, ['JSON'], false

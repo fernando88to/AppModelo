@@ -104,7 +104,8 @@ dataSource:
     driverClassName: oracle.jdbc.OracleDriver
     username: useroracle
     password: 123456
-    dialect: org.hibernate.dialect.Oracle10gDialect
+    #dialect: org.hibernate.dialect.Oracle10gDialect
+    dialect: org.hibernate.dialect.Oracle12cDialect
 
 environments:
     development:
@@ -120,12 +121,12 @@ environments:
         server:
             port: 8080
         dataSource:
-            dbCreate:
+            dbCreate: create
             url: jdbc:oracle:thin:@//oracle:1521/XEPDB1
     production:
         dataSource:
             dbCreate: none
-            url: jdbc:h2:./prodDb;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:oracle:thin:@//oracle:1521/XEPDB1
             properties:
                 jmxEnabled: true
                 initialSize: 5
